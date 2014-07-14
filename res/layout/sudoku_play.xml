@@ -61,13 +61,13 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:gravity="center_horizontal">
-		<com.zhufu.sudoku.gui.SudokuBoardView
+		<com.zhufu.sudoku2.gui.SudokuBoardView
 			android:id="@+id/sudoku_board"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:keepScreenOn="true"
 		     />
-		<com.zhufu.sudoku.gui.inputmethod.IMControlPanel
+		<com.zhufu.sudoku2.gui.inputmethod.IMControlPanel
 			android:id="@+id/input_methods"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent" />

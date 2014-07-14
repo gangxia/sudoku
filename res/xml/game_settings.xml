@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:os="http://schemas.android.com/apk/res/com.zhufu.sudoku">
+        xmlns:os="http://schemas.android.com/apk/res/com.zhufu.sudoku2">
     <PreferenceCategory
             android:title="@string/game_helpers">
         <CheckBoxPreference
@@ -78,7 +78,7 @@
         <PreferenceScreen
                 android:key="screen_game_advanced"
                 android:title="@string/more_settings">
-                <com.zhufu.sudoku.gui.SeekBarPreference                 
+                <com.zhufu.sudoku2.gui.SeekBarPreference                 
                 	android:key="screen_border_size"
                 	android:title="@string/screen_border_size"
                 	android:summary="@string/screen_border_size_summary"

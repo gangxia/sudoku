@@ -1,76 +1,52 @@
-# view AndroidManifest.xml #generated:174
--keep class com.adsdk.sdk.banner.InAppWebView { <init>(...); }
-
-# view AndroidManifest.xml #generated:181
--keep class com.adsdk.sdk.mraid.MraidBrowser { <init>(...); }
-
-# view AndroidManifest.xml #generated:177
--keep class com.adsdk.sdk.video.RichMediaActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:136
--keep class com.dlnetwork.DianleOfferActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:141
--keep class com.dlnetwork.DianleOfferHelpService { <init>(...); }
-
-# view AndroidManifest.xml #generated:185
+# view AndroidManifest.xml #generated:143
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:50
--keep class com.zhufu.sudoku.gui.FileImportActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.FileImportActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:130
--keep class com.zhufu.sudoku.gui.FileListActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.FileListActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:15
--keep class com.zhufu.sudoku.gui.FolderListActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.FolderListActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:124
--keep class com.zhufu.sudoku.gui.GameSettingsActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.GameSettingsActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:82
--keep class com.zhufu.sudoku.gui.ImportSudokuActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.ImportSudokuActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:21
--keep class com.zhufu.sudoku.gui.MainActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.MainActivity { <init>(...); }
 
 # view res/xml/game_settings.xml #generated:81
--keep class com.zhufu.sudoku.gui.SeekBarPreference { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SeekBarPreference { <init>(...); }
 
 # view land\res/layout-land/sudoku_edit.xml #generated:8
 # view land\res/layout-land/sudoku_play.xml #generated:10
 # view res/layout/sudoku_edit.xml #generated:8
 # view res/layout/sudoku_list_item.xml #generated:7
 # view res/layout/sudoku_play.xml #generated:64
--keep class com.zhufu.sudoku.gui.SudokuBoardView { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SudokuBoardView { <init>(...); }
 
 # view AndroidManifest.xml #generated:38
--keep class com.zhufu.sudoku.gui.SudokuEditActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SudokuEditActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:112
--keep class com.zhufu.sudoku.gui.SudokuExportActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SudokuExportActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:96
--keep class com.zhufu.sudoku.gui.SudokuImportActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SudokuImportActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:32
--keep class com.zhufu.sudoku.gui.SudokuListActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SudokuListActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:118
--keep class com.zhufu.sudoku.gui.SudokuPlayActivity { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.SudokuPlayActivity { <init>(...); }
 
 # view land\res/layout-land/sudoku_edit.xml #generated:13
 # view land\res/layout-land/sudoku_play.xml #generated:16
 # view res/layout/sudoku_edit.xml #generated:13
 # view res/layout/sudoku_play.xml #generated:70
--keep class com.zhufu.sudoku.gui.inputmethod.IMControlPanel { <init>(...); }
-
-# view AndroidManifest.xml #generated:144
--keep class com.zhufufb.FeedbackActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:161
--keep class com.zhufufb.FeedbackReceiver { <init>(...); }
-
-# view AndroidManifest.xml #generated:155
--keep class com.zhufufb.FeedbackService { <init>(...); }
+-keep class com.zhufu.sudoku2.gui.inputmethod.IMControlPanel { <init>(...); }
 
