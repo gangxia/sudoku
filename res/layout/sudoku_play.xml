@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/root_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="#ffffff"
+	    >
+	    
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_title_bar"
+        android:paddingTop="1dp" >
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/app_name"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/local_back_nomal"
+            android:clickable="true"
+            android:text="@string/back"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+          <Button
+            android:id="@+id/restart"
+            android:layout_width="60dp"
+            android:layout_height="33dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/local_in_nomal"
+            android:clickable="true"
+            android:text="重玩"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+    </RelativeLayout>
+        <RelativeLayout
+        android:id="@+id/adsdkContent"
+          android:layout_below="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_gravity="bottom"
+       >
+    </RelativeLayout>
+	<LinearLayout 
+	    android:layout_below="@id/adsdkContent"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:gravity="center_horizontal">
+		<com.zhufu.sudoku.gui.SudokuBoardView
+			android:id="@+id/sudoku_board"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:keepScreenOn="true"
+		     />
+		<com.zhufu.sudoku.gui.inputmethod.IMControlPanel
+			android:id="@+id/input_methods"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" />
+		
+	</LinearLayout>
+  	<TextView android:id="@+id/time_label"
+	    android:layout_width="wrap_content" 
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	   	android:background="#77333333" 
+	   	android:textColor="#FFFFFFFF"
+	   	/>
+</RelativeLayout>
