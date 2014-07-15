@@ -68,9 +68,8 @@ public class SeekBarPreference extends DialogPreference {
 		setDialogLayoutResource(R.layout.preference_dialog_seek_bar);
 
 		mSeekBar = new SeekBar(context, attrs);
-		
 		// Give it an ID so it can be saved/restored
-		mSeekBar.setId(100);
+		mSeekBar.setId(R.id.seek_bar);
 		mSeekBar.setOnSeekBarChangeListener(mOnSeekBarChangeListener);
 
 		TypedArray a = context.obtainStyledAttributes(attrs,

@@ -7,7 +7,7 @@
     
     <string name="version">Versione: %s</string>
 	<string name="homepage">Sito web: http://opensudoku.eu</string>
-	
+	<string name="email">Email: 627354935@qq.com</string>
 	<string name="work_in_progress">Da notare che si tratta ancora di un lavoro in corso.</string>
 	<string name="send_me_bugs">Se trovi un problema che vuio risolvere o qualsiasi suggerimento, non esistare a contattarci tramite email oppure ad usare il sistema di rintracciabilità degli errori nel sito del progetto.</string>
 	

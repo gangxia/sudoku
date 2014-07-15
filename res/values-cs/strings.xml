@@ -7,7 +7,7 @@
     
     <string name="version">Verze: %s</string>
 	<string name="homepage">Domovská stránka: http://opensudoku.eu</string>
-	
+	<string name="email">Email: 627354935@qq.com</string>
 	<string name="work_in_progress">Toto není finální verze.</string>
 	<string name="send_me_bugs">Pokud narazíte na chybu nebo máte nějaký návrh, nestyďte se mi poslat mail nebo použijte issue tracker na stránkách projektu.</string>
 	

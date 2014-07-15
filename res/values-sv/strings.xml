@@ -7,7 +7,7 @@
     
     <string name="version">Version: %s</string>
 	<string name="homepage">Webbsida: http://opensudoku.eu</string>
-	
+	<string name="email">E-post: 627354935@qq.com</string>
 	<string name="work_in_progress">Detta är ett program under utveckling.</string>
 	<string name="send_me_bugs">Om du stöter på en bugg du vill ha fixad eller har några förslag, tveka inte att kontakta oss via e-post eller använd ärendehanteringssystemet på projektets hemsida.</string>
 	

@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.ViewBinder;
@@ -71,7 +70,7 @@ public class FolderListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.folder_list);
-		ImageView back = (ImageView) findViewById(R.id.back);
+		Button back = (Button) findViewById(R.id.back);
 		back.setOnClickListener(new OnClickListener() {
 
 			@Override

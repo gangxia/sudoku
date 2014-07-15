@@ -35,16 +35,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.BaseGameActivity;
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 import com.zhufu.sudoku2.R;
 import com.zhufu.sudoku2.db.SudokuDatabase;
 import com.zhufu.sudoku2.game.SudokuGame;
@@ -56,7 +52,7 @@ import com.zhufu.sudoku2.utils.AndroidUtils;
 
 /*
  */
-public class SudokuPlayActivity extends BaseGameActivity {
+public class SudokuPlayActivity extends Activity {
 
 	public static final String EXTRA_SUDOKU_ID = "sudoku_id";
 
@@ -90,52 +86,38 @@ public class SudokuPlayActivity extends BaseGameActivity {
 	private boolean mFullScreen;
 	private boolean mFillInNotesEnabled = false;
 
-	ImageView back, restart;
+	Button back, restart;
 	TextView name;
 
 	private RelativeLayout layout;
 
 	private AdView adView;
-	int  denglu=0;
-
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		// theme must be set before setContentView
 
 		AndroidUtils.setThemeFromPreferences(this);
 
 		setContentView(R.layout.sudoku_play);
-		  // 创建adView。
-	    adView = new AdView(this);
-	    adView.setAdUnitId("ca-app-pub-1719065535565096/9714189967");
-	    adView.setAdSize(AdSize.BANNER);
+		layout = (RelativeLayout) findViewById(R.id.adsdkContent);
+		adView = new com.google.ads.AdView(this, AdSize.SMART_BANNER,
+				"a1534ff55a29ddf");
 
-	    // 查询LinearLayout，假设其已指定
-	    // 属性android:id="@+id/mainLayout"。
-	   layout = (RelativeLayout)findViewById(R.id.adsdkContent);
+		// 查询LinearLayout，假设其已指定
+		// 属性android:id="@+id/mainLayout"
 
-	    // 在其中添加adView。
-	    layout.addView(adView);
+		// 在其中添加adView
+		layout.addView(adView);
 
-	    // 启动一般性请求。
-	    AdRequest adRequest = new AdRequest.Builder().build();
-
-	    // 在adView中加载广告请求。
-	    adView.loadAd(adRequest);
-		
-		
-		
-		
-		
-		
-		
+		// 启动一般性请求并在其中加载广告
+		adView.loadAd(new AdRequest());
 		name = (TextView) findViewById(R.id.name);
-		back = (ImageView) findViewById(R.id.back);
+		back = (Button) findViewById(R.id.back);
 		layout = (RelativeLayout) findViewById(R.id.adsdkContent);
 		back.setOnClickListener(new OnClickListener() {
 
@@ -145,7 +127,7 @@ public class SudokuPlayActivity extends BaseGameActivity {
 				finish();
 			}
 		});
-		restart = (ImageView) findViewById(R.id.restart);
+		restart = (Button) findViewById(R.id.restart);
 		restart.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -176,7 +158,7 @@ public class SudokuPlayActivity extends BaseGameActivity {
 		mTimeLabel = (TextView) findViewById(R.id.time_label);
 
 		mDatabase = new SudokuDatabase(getApplicationContext());
-      
+
 		mGameTimer = new GameTimer();
 
 		mGuiHandler = new Handler();
@@ -220,13 +202,12 @@ public class SudokuPlayActivity extends BaseGameActivity {
 				.getInputMethod(IMControlPanel.INPUT_METHOD_SINGLE_NUMBER);
 		// mIMNumpad = mIMControlPanel
 		// .getInputMethod(IMControlPanel.INPUT_METHOD_NUMPAD);
-		
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		 adView.resume();
+
 		// read game settings
 		SharedPreferences gameSettings = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
@@ -307,7 +288,7 @@ public class SudokuPlayActivity extends BaseGameActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-	    adView.pause();
+
 		// we will save game to the database as we might not be able to get back
 		mDatabase.updateSudoku(mSudokuGame);
 
@@ -319,7 +300,7 @@ public class SudokuPlayActivity extends BaseGameActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		adView.destroy();
+
 		mDatabase.close();
 	}
 
@@ -358,12 +339,6 @@ public class SudokuPlayActivity extends BaseGameActivity {
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case DIALOG_WELL_DONE:
-			if (isSignedIn()) {
-				upload_score();
-			}else {
-				beginUserInitiatedSignIn();
-				denglu=1;
-			}
 			return new AlertDialog.Builder(this)
 					.setIcon(android.R.drawable.ic_dialog_info)
 					.setTitle(R.string.well_done)
@@ -465,51 +440,5 @@ public class SudokuPlayActivity extends BaseGameActivity {
 		}
 
 	}
-
-	@Override
-	public void onSignInFailed() {
-		// TODO Auto-generated method stub
-		if (denglu!=0) {
-			Toast.makeText(SudokuPlayActivity.this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
-			 denglu=0;
-		}
-	}
-
-	@Override
-	public void onSignInSucceeded() {
-		// TODO Auto-generated method stub
-		if (denglu!=0) {
-			upload_score();
-			 denglu=0;
-		}
-	}
-	public void upload_score()
-	{
-		long solve=mDatabase.Get_solve();
-		long time=mSudokuGame.getTime();
-		Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard1), solve);
-		Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard2), time);
-		if (solve>=1000) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements9));
-		}else if (solve>=500) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements8));
-		}else if (solve>=200) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements7));
-		}else if (solve>=100) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements6));
-		}else if (solve>=50) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements5));
-		}else if (solve>=20) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements4));
-		}else if (solve>=10) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements3));
-		}else if (solve>=5) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements2));
-		}else if (solve>=1) {
-			Games.Achievements.unlock(getApiClient(), getString(R.string.achievements1));
-		}
-		
-	}
-	  
 
 }

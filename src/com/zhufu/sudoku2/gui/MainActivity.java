@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Locale;
 
-import android.R.integer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,26 +23,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.BaseGameActivity;
-
+import com.google.ads.AdListener;
+import com.google.ads.AdRequest;
+import com.google.ads.AdRequest.ErrorCode;
+import com.google.ads.InterstitialAd;
 import com.zhufu.sudoku2.R;
 import com.zhufu.sudoku2.utils.AndroidUtils;
 
 
-public class MainActivity extends BaseGameActivity implements OnClickListener {
+public class MainActivity extends Activity implements OnClickListener,
+		AdListener {
 	RelativeLayout share, about,  exit, start;
 
 	Context context;
 
 	private InterstitialAd interstitial;
-	int  denglu=0;
-	 final int RC_RESOLVE = 5000, RC_UNUSED = 5001;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +64,6 @@ public class MainActivity extends BaseGameActivity implements OnClickListener {
 		
 		exit = (RelativeLayout) findViewById(R.id.exit);
 		exit.setOnClickListener(this);
-		findViewById(R.id.ach).setOnClickListener(this);
-		findViewById(R.id.top).setOnClickListener(this);
 
 	}
 
@@ -79,16 +72,17 @@ public class MainActivity extends BaseGameActivity implements OnClickListener {
 
 	public void initData() {
 	
-		  // 制作插页式广告。
-	    interstitial = new InterstitialAd(this);
-	    interstitial.setAdUnitId("ca-app-pub-1719065535565096/2190923168");
+		// 制作插页式广告
+		interstitial = new InterstitialAd(this, "a1534ff55a29ddf");
 
-	    // 创建广告请求。
-	    AdRequest adRequest = new AdRequest.Builder().build();
+		// 创建广告请求
+		AdRequest adRequest = new AdRequest();
 
-	    // 开始加载插页式广告。
-	    interstitial.loadAd(adRequest);
-		
+		// 开始加载插页式广告
+		interstitial.loadAd(adRequest);
+
+		// 将广告监听器设为使用以下回调
+		interstitial.setAdListener(this);
 		sharedPreferences = getSharedPreferences("frist", MODE_PRIVATE);
 		frist = sharedPreferences.getString("frist", "");
 
@@ -148,26 +142,7 @@ public class MainActivity extends BaseGameActivity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.ach:
-			if (isSignedIn()) {
-				 startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),
-		                    RC_UNUSED);
-			}else {
-				denglu=1;
-				beginUserInitiatedSignIn();
-				
-			}
-			break;
-		case R.id.top:
-           if (isSignedIn()) {
-        	   startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),
-                       RC_UNUSED);
-			}else {
-				denglu=2;
-				beginUserInitiatedSignIn();
-				
-			}
-			break;
+	
 
 		
 		case R.id.share:
@@ -277,34 +252,55 @@ public class MainActivity extends BaseGameActivity implements OnClickListener {
 		return super.onKeyDown(keyCode, event);
 	}
 
-
-	// 在您准备好展示插页式广告时调用displayInterstitial()。
-	  public void displayInterstitial() {
-	    if (interstitial.isLoaded()) {
-	      interstitial.show();
-	    }
-	  }
-
-	@Override
-	public void onSignInFailed() {
-		// TODO Auto-generated method stub
-		if (denglu!=0) {
-			Toast.makeText(MainActivity.this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
-			 denglu=0;
+	private String getLanguageEnv() {
+		Locale l = Locale.getDefault();
+		String language = l.getLanguage();
+		String country = l.getCountry().toLowerCase();
+		if ("zh".equals(language)) {
+			if ("cn".equals(country)) {
+				language = "zh-CN";
+			} else if ("tw".equals(country)) {
+				language = "zh-TW";
+			}
+		} else if ("pt".equals(language)) {
+			if ("br".equals(country)) {
+				language = "pt-BR";
+			} else if ("pt".equals(country)) {
+				language = "pt-PT";
+			}
 		}
+		return language;
 	}
 
 	@Override
-	public void onSignInSucceeded() {
+	public void onDismissScreen(com.google.ads.Ad arg0) {
 		// TODO Auto-generated method stub
-		if (denglu==1) {
-			 startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),
-	                    RC_UNUSED);
-			 denglu=0;
-		}else if (denglu==2) {
-			  startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),
-	                    RC_UNUSED);
-			  denglu=0;
+
+	}
+
+	@Override
+	public void onFailedToReceiveAd(com.google.ads.Ad arg0, ErrorCode arg1) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onLeaveApplication(com.google.ads.Ad arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPresentScreen(com.google.ads.Ad arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onReceiveAd(com.google.ads.Ad arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == interstitial) {
+			interstitial.show();
 		}
 	}
 

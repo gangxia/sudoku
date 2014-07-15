@@ -1,37 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-   Copyright (C) 2013 Google Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
--->
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <!-- TODO: Replace this by your app's app ID! -->
-    <string name="app_id">94864380580</string>
-
-  
-
-    <string name="leaderboard1">CgkIpKXusuECEAIQDg</string>
-    <string name="leaderboard2">CgkIpKXusuECEAIQEA</string>
-    
-     <string name="achievements1">CgkIpKXusuECEAIQAg</string>
-     <string name="achievements2">CgkIpKXusuECEAIQAw</string>   
-     <string name="achievements3">CgkIpKXusuECEAIQBA</string>
-     <string name="achievements4">CgkIpKXusuECEAIQBQ</string>
-     <string name="achievements5">CgkIpKXusuECEAIQBg</string>
-     <string name="achievements6">CgkIpKXusuECEAIQCA</string>
-     <string name="achievements7">CgkIpKXusuECEAIQCQ</string>
-     <string name="achievements8">CgkIpKXusuECEAIQCg</string>
-     <string name="achievements9">CgkIpKXusuECEAIQCw</string>
-     
-    
+  <item type="id" name="seek_bar" />
 </resources>
