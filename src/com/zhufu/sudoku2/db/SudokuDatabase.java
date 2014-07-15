@@ -25,6 +25,7 @@ import com.zhufu.sudoku2.game.FolderInfo;
 import com.zhufu.sudoku2.game.SudokuGame;
 import com.zhufu.sudoku2.gui.SudokuListFilter;
 
+import android.R.integer;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -111,6 +112,16 @@ public class SudokuDatabase {
         } finally {
         	if (c != null) c.close();
         }
+    }
+    public int Get_solve()
+    {
+    	
+    	SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+	    	String q = "select * from sudoku where  sudoku.state=2";
+	    	Cursor c=db.rawQuery(q, null);
+	    	return c.getCount();
+	    
+    	
     }
     
     /**

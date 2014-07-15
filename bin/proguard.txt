@@ -1,5 +1,5 @@
-# view AndroidManifest.xml #generated:143
--keep class com.google.ads.AdActivity { <init>(...); }
+# view AndroidManifest.xml #generated:144
+-keep class com.google.android.gms.ads.AdActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:50
 -keep class com.zhufu.sudoku2.gui.FileImportActivity { <init>(...); }
@@ -26,7 +26,7 @@
 # view land\res/layout-land/sudoku_play.xml #generated:10
 # view res/layout/sudoku_edit.xml #generated:8
 # view res/layout/sudoku_list_item.xml #generated:7
-# view res/layout/sudoku_play.xml #generated:64
+# view res/layout/sudoku_play.xml #generated:62
 -keep class com.zhufu.sudoku2.gui.SudokuBoardView { <init>(...); }
 
 # view AndroidManifest.xml #generated:38
@@ -47,6 +47,6 @@
 # view land\res/layout-land/sudoku_edit.xml #generated:13
 # view land\res/layout-land/sudoku_play.xml #generated:16
 # view res/layout/sudoku_edit.xml #generated:13
-# view res/layout/sudoku_play.xml #generated:70
+# view res/layout/sudoku_play.xml #generated:68
 -keep class com.zhufu.sudoku2.gui.inputmethod.IMControlPanel { <init>(...); }
 

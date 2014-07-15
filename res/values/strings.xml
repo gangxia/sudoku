@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sudoku2014</string>
+    <string name="app_name">Sudoku_Legend</string>
     <string name="edit_sudoku">Edit sudoku</string>
     
     <string name="puzzle_folders">Sudoku puzzle folders</string>
     
     <string name="version">Version: %s</string>
 	<string name="homepage">Homepage: http://opensudoku.eu</string>
-	<string name="email">Email: 627354935@qq.com</string>
+	<string name="email">Email:chuangang10160711@gmail.com</string>
 	<string name="work_in_progress">Please note that this is still work in progress.</string>
 	<string name="send_me_bugs">If you run into bug which you want to get fixed, don\'t hesitate to contact me by e-mail or use issue tracker on project\'s homepage.</string>
 	
@@ -17,6 +17,8 @@
 	<string name="back">Back</string>
 	<string name="exit">Exit</string>
 	<string name="share">Share</string>
+	<string name="ach">Achievements</string>
+	<string name="top">Leaderboards</string>
 	<string name="share_text">An good sudoku game.</string>
 	<string name="start">Start</string>
 	
@@ -171,4 +173,6 @@
 	<string name="set_checkpoint">Set checkpoint</string>
 	<string name="undo_to_checkpoint">Undo to checkpoint</string>
 	<string name="undo_to_checkpoint_confirm">Are you sure you want to undo all actions since last checkpoint?</string>
+	
+	<string name="login_failed">Login failed</string>
 </resources>

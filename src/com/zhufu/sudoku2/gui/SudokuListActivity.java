@@ -40,6 +40,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.ViewBinder;
@@ -92,7 +93,7 @@ public class SudokuListActivity extends ListActivity {
 	private Cursor mCursor;
 	private SudokuDatabase mDatabase;
 	private FolderDetailLoader mFolderDetailLoader;
-	Button back;
+	ImageView back;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +104,7 @@ public class SudokuListActivity extends ListActivity {
 
 		setContentView(R.layout.sudoku_list);
 		mFilterStatus = (TextView) findViewById(R.id.filter_status);
-		back = (Button) findViewById(R.id.back);
+		back = (ImageView) findViewById(R.id.back);
 		back.setOnClickListener(new OnClickListener() {
 
 			@Override
